@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+:root{
+    --red-main: #E63946;
+    --white-main: #F1FAEE;
+    --baby-blue-main: #A8DADC;
+    --blue-main: #457B9D;
+    --dark-blue-main: #1D3557;
+
+    --shadow-color: 233deg 69% 32%;
+
+    --shadow-elevation-low:
+      0.2px 0.3px 0.4px hsl(var(--shadow-color) / 0.49),
+      0.3px 0.6px 0.8px -1.2px hsl(var(--shadow-color) / 0.49),
+      0.8px 1.5px 1.9px -2.5px hsl(var(--shadow-color) / 0.49);
+    --shadow-elevation-medium:
+      0.2px 0.3px 0.4px hsl(var(--shadow-color) / 0.51),
+      0.6px 1.2px 1.5px -0.8px hsl(var(--shadow-color) / 0.51),
+      1.5px 3px 3.8px -1.7px hsl(var(--shadow-color) / 0.51),
+      3.8px 7.4px 9.4px -2.5px hsl(var(--shadow-color) / 0.51);
+    --shadow-elevation-high:
+      0.2px 0.3px 0.4px hsl(var(--shadow-color) / 0.54),
+      1.4px 2.7px 3.4px -0.4px hsl(var(--shadow-color) / 0.54),
+      2.8px 5.5px 6.9px -0.8px hsl(var(--shadow-color) / 0.54),
+      5px 9.7px 12.3px -1.2px hsl(var(--shadow-color) / 0.54),
+      8.5px 16.6px 21px -1.7px hsl(var(--shadow-color) / 0.54),
+      14px 27.3px 34.5px -2.1px hsl(var(--shadow-color) / 0.54),
+      22.2px 43.2px 54.6px -2.5px hsl(var(--shadow-color) / 0.54);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--dark-blue-main);
+}
+
+main{
+    background-color: var(--blue-main);
+    padding: 12px;
+    border-radius: 5px;
+
+    box-shadow:
+    3.4px 3.4px 4.3px rgba(0, 0, 0, 0.026),
+    8.7px 8.7px 14.4px rgba(0, 0, 0, 0.039),
+    17.7px 17.7px 37.5px rgba(0, 0, 0, 0.046),
+    36.5px 36.5px 69.2px rgba(0, 0, 0, 0.051),
+    100px 100px 86px rgba(0, 0, 0, 0.07);
+
+    font-family: 'Poiret One';
+}
+
+#display{
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    background-color: var(--baby-blue-main);
+    border-radius: 2px;
+    width: 260px;
+    box-shadow: var(--shadow-elevation-low);
+    text-align: right;
+}
+
+#result{
+    font-size: 20px;
+    height: 28px;
+}
+
+#input{
+    font-size: 38px;
+    height: 44px;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "clear clear divide multiply"
+    "seven eight nine subtract"
+    "four five six add"
+    "one two three equals"
+    "zero zero decimal equals";
+    gap:2px;
+}
+
+button{
+    min-height: 50px;
+    background-color: var(--dark-blue-main);
+    color:var(--white-main);
+    border: 0px solid;
+    border-radius: 2px;
+
+    box-shadow: var(--shadow-elevation-low);
+}
+
+button:hover{
+    background-color: var(--red-main);
+    cursor: pointer;
+    opacity: 84%;
+}
+
+.numberButton{
+    background-color: #1d3557d7;
+}
+
+
+#clear{
+    grid-area: clear;
+}
+
+#divide{
+    grid-area: divide;
+}
+
+#multiply{
+    grid-area: multiply;
+}
+
+#seven{
+    grid-area: seven;
+} 
+
+#eight{
+    grid-area: eight;
+} 
+
+#nine{
+    grid-area: nine;
+} 
+
+#subtract{
+    grid-area: subtract;
+}
+
+#four{
+    grid-area: four;
+} 
+#five{
+    grid-area: five;
+} 
+#six{
+    grid-area: six;
+} 
+#add{
+    grid-area: add;
+}
+#one{
+    grid-area: one;
+} 
+#two{
+    grid-area: two;
+} 
+#three{
+    grid-area: three;
+} 
+#equals{
+    grid-area: equals;
+    background-color: #c42d3a;
+}
+#decimal{
+    grid-area: decimal;
+} 
+#zero{
+    grid-area: zero;
+} 
