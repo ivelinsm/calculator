@@ -2,44 +2,67 @@ import React, { useState } from "react";
 import Buttons from "./Buttons";
 import Display from "./Display";
 import { evaluate } from "mathjs";
+import { isClickableInput } from "@testing-library/user-event/dist/utils";
 
-const isValid = (key, input) => {
-  if (key) {
-    return true
-  }
-};
+const isNumber = (val) => {
+  return !isNaN(val) ? true : false
+}
+
+const multipleOperatorCheck = (val, equ) => {
+
+}
 
 const App = () => {
-  const [input, setInput] = useState("");
-  const [previous, setPrevious] = useState("");
+  const [currentValue, setCurrentValue] = useState("0");
+  const [equation, setEquation] = useState("");
+  let prevEquation = '';
+  let prevValue = '';
   const operations = ["x", "/", "-", "+", "=", "AC", "."];
+
+  const isThereZeroBefore = (num) => {
+    return num==='0' ? true : false
+  }
 
   const calculate = (e) => {
     e.preventDefault();
-    let pressedKey = e.target.value;
-    if (!isValid(pressedKey, input)){
-      return;
+
+    let clickedButton = e.target.value;
+
+    if(isNumber(clickedButton)){
+      if(isThereZeroBefore(currentValue)){
+        setCurrentValue(clickedButton);
+        setEquation(clickedButton);
+      }
+      else{
+        setCurrentValue(currentValue + clickedButton);
+        setEquation(equation + clickedButton);
+      }
     }
-      switch (pressedKey) {
+    else{
+      setEquation(equation + clickedButton);
+
+      switch (clickedButton) {
         case "x":
-          setInput(input + "*");
+          setCurrentValue("*");
+          setEquation(equation + '*');
           break;
         case "=":
-          setPrevious(input);
-          setInput(evaluate(input));
+          setEquation(currentValue + "=" + (evaluate(currentValue)));
+          setCurrentValue(evaluate(currentValue));
           break;
         case "AC":
-          setPrevious("");
-          setInput("");
+          setEquation("");
+          setCurrentValue("0");
           break;
         default:
-          setInput(input + pressedKey);
+          setCurrentValue(clickedButton);
       }
+    }
   };
 
   return (
     <main>
-      <Display input={input} result={previous} />
+      <Display currentValue={currentValue} result={equation} />
       <Buttons onBtnClick={calculate} />
     </main>
   );
